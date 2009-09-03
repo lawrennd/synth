@@ -1,0 +1,32 @@
+<head>
+<title>Speech Synthesis through Eigenvoices - MATLAB Software</title>
+</head>
+
+<body><div class="section">
+
+<h1>Speech Synthesis Software</h1>
+
+<p>This page describes examples of how to use the simple MATLAB interface to the eigenvoice software for generating speech based on the Grid corpus.
+
+<p>This software has been tested on Linux only, it requires the presence of Perl, the HTK, and the SPTK as well as the SoX package. 
+
+RELEASEINFORMATION
+
+
+Ensure the following binary files are in the path: HMGenS (from HTK), excite, mglsadf (from SPTK). Compile the file f2s.c using gcc (gcc -o f2s f2s.c) and ensure it is in the path.
+
+<p>There are two main demonstration files, 
+
+<p><code>
+&gt;&gt; demEigenvoiceLatent
+</code>
+
+<p>for visualizing the latent space of the eigenvoices and
+
+<p><code>
+&gt;&gt; demProjectVoices
+</code>
+
+<p>for reacreating individual speaker voices by projecting them onto the principal components defined by the other speakers.
+
+
