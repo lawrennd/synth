@@ -1,6 +1,6 @@
 function [normalised, meandata] = synthNormaliseData(data)
 
-% NORMAISE_DATA Subtract the mean from the data.
+% SYNTHNORMALISEDATA Subtract the mean from the data.
 % FORMAT
 % DESC subtracts the mean from the data and performs any other
 % normalization.

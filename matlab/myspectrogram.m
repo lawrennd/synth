@@ -59,7 +59,15 @@ function X = myspectrogram(x,nfft,fs,window,noverlap,doplot,dbdown);
 % 02/04/02/jos: Created
 % 02/12/04/jos: Added dbdown
 % 07/23/08/jos: Changed name from SPECTROGRAM to MYSPECTROGRAM
+% 30/08/09/Neil Lawrence : use voicebox hamming window.
+%
+% COPYRIGHT :Jos, 2002, 2004, 2008
+%
+% MODIFICATIONS : Neil D. Lawrence, 2009 
 
+ 
+% SYNTH 
+  
 if nargin<7, dbdown=100; end
 if nargin<6, doplot=0; end
 if nargin<5, noverlap=256; end

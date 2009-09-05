@@ -20,12 +20,12 @@ function synthEigenvoiceSetup(dtype, m, v, d1, d2, space2plot, spec1plot, spec2p
 % SEEALSO demEigenvoiceLatent
 
 % SYNTH
+  global visualiseInfo
+  np = size(m,2);
   
-np = size(m,2);
-
-subplot(spec1plot); cla;
-  subplot(spec2plot); cla;
-  subplot(space2plot); cla;
+  subplot(visualiseInfo.spec1plot); cla;
+  subplot(visualiseInfo.spec2plot); cla;
+  subplot(visualiseInfo.plotAxes); cla;
   
   [l, evoices, meanvoice] = synthScatterSpeakers(m, d1, d2);
 
@@ -35,7 +35,7 @@ subplot(spec1plot); cla;
     error(w);
   end
 
-  ncolumns = synthDisplaySpectrogram(spec1plot, [synthDirectory 'data/demo/demo.wav']);
+  ncolumns = synthDisplaySpectrogram(visualiseInfo.spec1plot, [synthDirectory 'data/demo/demo.wav']);
   
   if (dtype=='dur')
     synth_command=[synthDirectory 'eigenvoice_interactive.sh dur ' synthDirectory ...
@@ -62,13 +62,13 @@ subplot(spec1plot); cla;
       error(w);
     end
 
-    synthDisplaySpectrogram(spec2plot, [synthDirectory 'data/demo/demo.wav'], ncolumns);
+    synthDisplaySpectrogram(visualiseInfo.spec2plot, [synthDirectory 'data/demo/demo.wav'], ncolumns);
     [s, w] = system(['play ' synthDirectory 'data/demo/demo.wav']);
     if s
       error(w);
     end
     
-    subplot(space2plot)
+    subplot(visualiseInfo.plotAxes)
     
     [p1 p2 button] = ginput(1);
     

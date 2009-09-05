@@ -11,6 +11,7 @@ function synthWriteHmmParams(name, params);
 %
 % COPYRIGHT : Jon Barker, 2009
   
+% SYNTH
   
   fid = fopen(name,'wt');
   fprintf(fid,'%f ',params);

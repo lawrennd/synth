@@ -13,16 +13,16 @@ function synthEigenvoiceCallback
   
 % SYNTH
   
-  ud = get(gcf,'UserData');
-  
+  global visualiseInfo
+    
   dtypes={'dur','cmp'};
-  dtypei=get(ud.datatype_popup,'Value');
+  dtypei=get(visualiseInfo.datatype_popup,'Value');
   dtype=char(dtypes(dtypei));
   
   
-  utti = get(ud.utt_popup,'Value');
-  utts = get(ud.utt_popup,'String');
-  utt=strtrim(utts(utti,:));
+  utti = get(visualiseInfo.utt_popup,'Value');
+  utts = get(visualiseInfo.utt_popup,'String');
+  utt=strtrim(utts{utti});
   command = ['cp ' synthDirectory 'data/' utt '.lab ' synthDirectory 'data/demo.lab'];  
   [s, w] = system(command);
   if s
@@ -30,15 +30,15 @@ function synthEigenvoiceCallback
   end
   
   if (dtype=='dur')
-    m=ud.durm;
-    v=ud.durv;
+    m=visualiseInfo.durm;
+    v=visualiseInfo.durv;
   else
-    m=ud.cmpm;
-    v=ud.cmpv;
+    m=visualiseInfo.cmpm;
+    v=visualiseInfo.cmpv;
   end
   
-  d1=get(ud.d1_popup, 'Value');
-  d2=get(ud.d2_popup, 'Value');
+  d1=get(visualiseInfo.d1_popup, 'Value');
+  d2=get(visualiseInfo.d2_popup, 'Value');
   
-  synthEigenvoiceSetup(dtype, m, v, d1, d2, ud.spaceplot, ud.spec1plot, ud.spec2plot);
+  synthEigenvoiceSetup(dtype, m, v, d1, d2);
 end

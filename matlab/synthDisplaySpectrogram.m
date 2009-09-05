@@ -1,4 +1,4 @@
-function columns = synthDisplaySpectrogram(ax, filename, desired_ncolumns)  
+function [columns, h, spec_im] = synthDisplaySpectrogram(ax, filename, desired_ncolumns)  
 
 % SYNTHDISPLAYSPECTROGRAM Display the synthesized spectrogram.
 % FORMAT
@@ -7,6 +7,7 @@ function columns = synthDisplaySpectrogram(ax, filename, desired_ncolumns)
 % ARG filename : the file to display.
 % ARG ncols : the desired number of columns to display.
 % RETURN cols : the columns size of the spectrogram.
+% RETURN h : handle to the image data from the spectrogram.
 %
 % SEEALSO : demEigenvoiceLatent, demProjectvoices
 %
@@ -16,23 +17,28 @@ function columns = synthDisplaySpectrogram(ax, filename, desired_ncolumns)
   
 % SYNTH
 
-  subplot(ax)
-  x=wavread(filename); 
-  sp=myspectrogram(x, 2048, 8000); 
+  if nargout < 3
+    axes(ax);
+  end
+  x = wavread(filename); 
+  sp = myspectrogram(x, 2048, 8000); 
   spec_im = flipud(log(abs(sp(1:700,:))));
-  ncolumns=size(spec_im,2);
+  ncolumns = size(spec_im, 2);
   if (nargin==3) 
     if (desired_ncolumns<ncolumns)
       % Truncate spectrogram to desired width
-      spec_im=spec_im(:,1:desired_ncolumns);
+      spec_im = spec_im(:, 1:desired_ncolumns);
     elseif (desired_ncolumns>ncolumns)
       % Pad spectrogram to desired width
       pad=zeros(700,desired_ncolumns-ncolumns);
       spec_im = [spec_im pad];
     end
   end
-  
-  imagesc(spec_im);
-  drawnow;
+  if nargout < 3
+    h = imagesc(spec_im);
+    drawnow;
+  else
+    h = [];
+  end
   columns=size(spec_im,2);
 end

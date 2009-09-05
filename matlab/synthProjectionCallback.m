@@ -21,7 +21,8 @@ function [projection, mse] = synthProjectionCallback(mode)
   % Load label sequence to be synthesised
   utti = get(ud.utt_popup,'Value');
   utts = get(ud.utt_popup,'String');
-  utt=strtrim(utts(utti,:));
+  utt = strtrim(utts{utti});
+%  utt=strtrim(utts(utti,:));
   command = ['cp ' synthDirectory 'data/' utt '.lab ' synthDirectory 'data/demo.lab'];
   [s, w] = system(command);
   if s
