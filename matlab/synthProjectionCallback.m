@@ -33,11 +33,11 @@ function [projection, mse] = synthProjectionCallback(mode)
   v=ud.cmpv;
   
   % Get id
-  target_id=str2num(get(ud.id_edit,'String'));
-  
+  target_id=get(ud.id_edit,'value');
+
   % Get ndims
   ndims=str2num(get(ud.ndims_edit,'String'));
-
+  
   %
   cheat=get(ud.mode_checkbox,'Value');
 
@@ -47,11 +47,12 @@ function [projection, mse] = synthProjectionCallback(mode)
     m=m([1:34]~=target_id,:);
   end
   
-  if (strcmp(mode,'orig')==1)
-    n=size(m,1);
-    [projection, mse]=project(target, m, n);
+  if (strcmp(mode,'orig'))
+    projection = target;
+    %n=size(m,1);
+    %[projection, mse]=project(target, m, n);
     plotpane=ud.spec1plot;
-  elseif (strcmp(mode,'reduced')==1)
+  elseif (strcmp(mode,'reduced'))
     [projection, mse]=project(target, m, ndims);
       
     plotpane=ud.spec2plot;

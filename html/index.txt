@@ -13,7 +13,13 @@
 RELEASEINFORMATION
 
 
-Ensure the following binary files are in the path: HMGenS (from HTK), excite, mglsadf (from SPTK). Compile the file f2s.c using gcc (gcc -o f2s f2s.c) and ensure it is in the path.
+<p>This is the first release for the Interspeech tutorial.
+
+<h3>Installation</h3>
+
+<p>Ensure the following binary files are in the path: HMGenS (from HTK), excite, mglsadf (from SPTK). Compile the file f2s.c using gcc (gcc -o f2s f2s.c) and ensure it is in the path.
+
+<h3>Examples</h3>
 
 <p>There are two main demonstration files, 
 
@@ -29,4 +35,4 @@ Ensure the following binary files are in the path: HMGenS (from HTK), excite, mg
 
 <p>for reacreating individual speaker voices by projecting them onto the principal components defined by the other speakers.
 
-
+<p>The <a href="../dimred/">dimensionality reduction toolbox</a> also makes use of the SYNTH toolbox for some examples of dimensionality reduction.
