@@ -29,8 +29,7 @@ function synthEigenvoiceSetup(dtype, m, v, d1, d2, space2plot, spec1plot, spec2p
   
   [l, evoices, meanvoice] = synthScatterSpeakers(m, d1, d2);
 
-  [s, w] = system([synthDirectory 'eigenvoice_interactive.sh mean ' ...
-                   synthDirectory]);
+  [s, w] = system([synthDirectory 'eigenvoice_interactive.sh mean ' synthDirectory]);
   if s
     error(w);
   end

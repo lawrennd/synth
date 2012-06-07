@@ -1,54 +1,13 @@
 #!/usr/bin/perl
 # ----------------------------------------------------------------- #
-#           The HMM-Based Speech Synthesis System (HTS)             #
-#           developed by HTS Working Group                          #
-#           http://hts.sp.nitech.ac.jp/                             #
-# ----------------------------------------------------------------- #
-#                                                                   #
-#  Copyright (c) 2001-2008  Nagoya Institute of Technology          #
-#                           Department of Computer Science          #
-#                                                                   #
-#                2001-2008  Tokyo Institute of Technology           #
-#                           Interdisciplinary Graduate School of    #
-#                           Science and Engineering                 #
-#                                                                   #
-# All rights reserved.                                              #
-#                                                                   #
-# Redistribution and use in source and binary forms, with or        #
-# without modification, are permitted provided that the following   #
-# conditions are met:                                               #
-#                                                                   #
-# - Redistributions of source code must retain the above copyright  #
-#   notice, this list of conditions and the following disclaimer.   #
-# - Redistributions in binary form must reproduce the above         #
-#   copyright notice, this list of conditions and the following     #
-#   disclaimer in the documentation and/or other materials provided #
-#   with the distribution.                                          #
-# - Neither the name of the HTS working group nor the names of its  #
-#   contributors may be used to endorse or promote products derived #
-#   from this software without specific prior written permission.   #
-#                                                                   #
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND            #
-# CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,       #
-# INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF          #
-# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE          #
-# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS #
-# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,          #
-# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED   #
-# TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,     #
-# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON #
-# ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,   #
-# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY    #
-# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE           #
-# POSSIBILITY OF SUCH DAMAGE.                                       #
-# ----------------------------------------------------------------- #
+                                                                 #
 
-# Based on Training.pl from the HTS working group. Modified 2009 by Jon Barker.
+# ----------------------------------------------------------------- #
 
 $|=1;
 
 if (@ARGV<4) {
-   print "usage: Synth.simple.pl Config.synth.pm cmpHMM durHMM labfile outdir workingdir\n";
+   print "usage: Training.pl Config.pm cmpHMM durHMM labfile outdir workingdir\n";
    exit(0);
 }
 $cmphmm=$ARGV[1];
@@ -345,7 +304,7 @@ sub gen_wave($) {
          $line = "$EXCITE -p $fs $gendir/$base.pit | "
                . "$MGLSADF -m ".($ordr{'mgc'}-1)." -p $fs -a $fw -c $gm $mgc  > xxx; "
                . "$F2S xxx yyy; "
-               . "cat yyy | $SOX -c 1 -s -w -t raw -r $sr - -c 1 -s -w -t wav -r $sr - > $gendir/$base.wav; rm xxx yyy;";
+               . "cat yyy | $SOX -c 1 -s -2 -t raw -r $sr - -c 1 -s -2 -t wav -r $sr - > $gendir/$base.wav; rm xxx yyy;";
 	 shell("rm -f xxx; rm -f yyy");
 	 print("\n$line\n");
          shell($line);
