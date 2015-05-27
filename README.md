@@ -6,19 +6,19 @@ This page describes examples of how to use the simple MATLAB interface to the ei
 
 This software has been tested on Linux only, it requires the presence of Perl, the HTK, and the SPTK as well as the SoX package.
 
-The SYNTH software can be downloaded [here](http://ml.sheffield.ac.uk/~neil/cgi-bin/software/downloadForm.cgi?toolbox=synth).
+The SYNTH software can be downloaded here.
 
 Release Information
 -------------------
 
 **Current release is 0.1**.
 
-As well as downloading the SYNTH software you need to obtain the toolboxes specified below. **These can be downloaded using the *same* password you get from registering for the SYNTH software.**
+As well as downloading the SYNTH software you need to obtain the toolboxes specified below. 
 
-| **Toolbox**                                                                | **Version** |
-|----------------------------------------------------------------------------|-------------|
-| [VOICEBOX](http://ml.sheffield.ac.uk/~neil/voicebox/downloadFiles/vrs1p12) | 1.12        |
-| [NDLUTIL](http://ml.sheffield.ac.uk/~neil/ndlutil/downloadFiles/vrs0p161)  | 0.161       |
+| **Toolbox**                                 | **Version** |
+|---------------------------------------------|-------------|
+| [VOICEBOX](/voicebox/downloadFiles/vrs1p12) | 1.12        |
+| [NDLUTIL](/ndlutil/downloadFiles/vrs0p161)  | 0.161       |
 
 This is the first release for the Interspeech tutorial.
 
